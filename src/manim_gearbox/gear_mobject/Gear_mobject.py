@@ -187,21 +187,6 @@ class Gear(VMobject):
         v = self.get_angle_vector()
         return np.arctan2(v[1], v[0])
 
-    def set_stroke(
-        self,
-        color=None,
-        **kwargs
-    ):
-        '''
-        Override set_stroke to avoid revealing the line which is used for tracking center and angle.
-        If family is specified, it will still do it.
-        '''
-        if 'family' in kwargs:
-            super().set_stroke(color,**kwargs)
-        else:
-            kwargs.pop('family')
-            super().set_stroke(color,family=False, **kwargs)
-
     def generate_points(self):
 
         # involute starts at 0 angle at rb, but it should be at 0 on rp, so need an offset angle
